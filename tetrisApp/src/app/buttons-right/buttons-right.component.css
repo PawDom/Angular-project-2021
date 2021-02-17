@@ -1,0 +1,17 @@
+button{
+    background-color: rosybrown;
+    color:seashell;
+    padding: 5px;
+    margin:3px;
+    width: 75px;
+}
+.positionCompBtnRight{
+    margin: 20% 0% 15% -100px;
+    padding: 10px;
+}
+.btnRight{
+    text-align: right;
+}
+.btnLeft{
+    text-align: left;
+}
