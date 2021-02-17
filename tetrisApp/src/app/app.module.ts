@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TetrisCoreComponent } from './tetris-core/tetris-core.component';
+import { buttons } from './buttons/buttons.component';
 import {TetrisCoreModule} from 'ngx-tetris';
+import { ButtonsRightComponent } from './buttons-right/buttons-right.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TetrisCoreComponent,
+    buttons,
+    ButtonsRightComponent,
   ],
   imports: [
     BrowserModule,
