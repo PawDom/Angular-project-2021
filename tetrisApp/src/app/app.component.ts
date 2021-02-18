@@ -7,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Game of TETRIS';
+  title="Tetris Game"
+  person = {};
+  view = 'intro-page';
+  //view = 'game';
+
+  onGameStart($event)
+  {
+    this.person = {
+      name: $event.name,
+      email: $event.email,
+    };
+    this.view = 'core-game';
+  }
+
+  onGameExit($event)
+  {
+    this.view = 'intro-page';
+  }
 }

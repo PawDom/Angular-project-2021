@@ -1,20 +1,33 @@
-<section>
-  <div class=".container-fluid">
+<header>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <h1>{{ title }}</h1>
       </div>
     </div>
   </div>
-</section>
-<section>
+</header>
+
+<app-intro-page
+  *ngIf="view == 'intro-page'"
+  (startEvent)="onGameStart($event)"
+></app-intro-page>
+
+<app-core-game
+  *ngIf="view == 'core-game'"
+  (exitEvent)="onGameExit()"
+  [person]="person"
+></app-core-game>
+
+<footer>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <div class="col-md-4" style="float: left;"><app-buttons></app-buttons></div>
-        <div class="col-md-4" style="float: left;"><tetris-core></tetris-core></div>
-        <div class="col-md-4" style="float: left;"><app-buttons-right></app-buttons-right></div>
+        <p>
+          Created by Paweł Domurat © 2021. Wykorzystano bibiotekę
+          <a href="https://www.npmjs.com/package/ngx-tetris">ngx-tetris</a>.
+        </p>
       </div>
     </div>
   </div>
-</section>
+</footer>

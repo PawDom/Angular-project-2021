@@ -1,0 +1,68 @@
+<section class="introPage">
+  <div class="container-fluid page-content">
+    <div class="row">
+      <div class="col-md-12">
+        <form #personForm="ngForm">
+          <div class="form-group">
+            <label for="name-input">Enter Your name:</label>
+            <input
+              ngModel
+              #name="ngModel"
+              id="name-input"
+              name="name"
+              class="form-control"
+              type="text"
+              required
+              minlength="3"
+            />
+            <!-- Errors section -->
+            <div
+              class="alert alert-danger"
+              *ngIf="name.touched && name.invalid"
+            >
+              <div *ngIf="name.errors.required">Your name is required.</div>
+              <div *ngIf="name.errors.minlength">
+                Your name should be mininum
+                {{ name.errors.minlength.requiredLength }} characters.
+              </div>
+              <div *ngIf="name.errors.pattern">
+                Your name should start with a letter.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email-input">Enter Your e-mail:</label>
+            <input
+              ngModel
+              #email="ngModel"
+              id="email-input"
+              name="email"
+              class="form-control"
+              type="text"
+              required
+              email="true"
+            />
+            <!-- Errors section -->
+            <div
+              class="alert alert-danger"
+              *ngIf="email.touched && email.invalid"
+            >
+              <div *ngIf="email.errors.required">Your e-mail is required.</div>
+              <div *ngIf="email.errors.email">
+                Please enter your valid e-mail.
+              </div>
+            </div>
+          </div>
+
+          <button
+            (click)="start(personForm.form)"
+            class="btn btn-outline-secondary my-3 float-center"
+          >
+            Start
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

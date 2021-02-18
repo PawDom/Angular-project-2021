@@ -1,0 +1,64 @@
+<div class="container-fluid page-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-12">
+        <h2 class="h2Header">Oh, hello there {{ person.name }} !!</h2>
+        <p>{{ person.email }}</p>
+      </div>
+
+      <div class="col-md-4">
+        <p>{{ gameStatus }}</p>
+        <button class="btn btn-outline-dark mx-1" (click)="onGameStart()">
+          {{ game.state == 1 ? "Pause" : "Start" }}
+        </button>
+        <button class="btn btn-outline-dark mx-1" (click)="onGameReset()">
+          Restart
+        </button>
+        <button class="btn btn-outline-danger mx-1" (click)="onGameExit()">
+          Exit game
+        </button>
+        <hr />
+      </div>
+      <div class="col-md-4">
+        <tetris-core
+          #game
+          (lineCleared)="onLineCleared()"
+          (gameOver)="onGameOver()"
+        >
+        </tetris-core>
+      </div>
+
+      <div class="col-md-4">
+        <div style="font-size: 1.25rem" class="d-flex justify-content-around">
+          <p>
+            Score: <b>{{ points }}</b>
+          </p>
+        </div>
+        <div>
+          <p>
+            Use arrow keys to steer LEFT, RIGHT, DOWN; UP - to rotate; SPACEBAR
+            - to start/pause.
+          </p>
+          <div class="col-md-12 positionCompBtnRight">
+            <div class="col-md-12">
+              <button class="btn btn-outline-dark" (click)="onRotate()">
+                Rotate
+              </button>
+            </div>
+            <div class="col-md-12">
+              <button class="btn btn-outline-dark btnLeft" (click)="onLeft()">
+                Left
+              </button>
+              <button class="btn btn-outline-dark btnRight" (click)="onRight()">
+                Right
+              </button>
+            </div>
+            <div class="col-md-12">
+              <button class="btn btn-outline-dark" (click)="onDown()">Down</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
