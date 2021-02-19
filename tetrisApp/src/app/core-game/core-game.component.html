@@ -6,9 +6,18 @@
         <p>{{ person.email }}</p>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-6">
+          <div  class="d-flex justify-content-around">
+            <p>Time you lost playing this game:<br>
+              <span style="font-size: 20px;"><b>{{h}}h</b> <b> {{min}}min</b> <b> {{sek}}sek</b></span></p>
+          </div>
+          <div class="d-flex justify-content-around">
+            <p>Your score:<br>
+              <span style="font-size: 20px;"><b>{{ points }}</b></span></p>
+          </div> <hr />
+        <div>
         <p>{{ gameStatus }}</p>
-        <button class="btn btn-outline-dark mx-1" (click)="onGameStart()">
+        <button class="btn btn-outline-dark mx-1" (click)="onGameStart()" (click)="incrementCounter()">
           {{ game.state == 1 ? "Pause" : "Start" }}
         </button>
         <button class="btn btn-outline-dark mx-1" (click)="onGameReset()">
@@ -17,43 +26,35 @@
         <button class="btn btn-outline-danger mx-1" (click)="onGameExit()">
           Exit game
         </button>
-        <hr />
       </div>
-      <div class="col-md-4">
+          <div style="margin-top: 50px;">
+            <div class="col-md-12 positionCompBtnRight">
+              <div class="col-md-12">
+                <button class="btn btn-outline-dark" (click)="onRotate()">
+                  Rotate
+                </button>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-outline-dark btnLeft" (click)="onLeft()">
+                  Left
+                </button>
+                <button class="btn btn-outline-dark btnRight" (click)="onRight()">
+                  Right
+                </button>
+              </div>
+              <div class="col-md-12">
+                <button class="btn btn-outline-dark" (click)="onDown()">Down</button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-6">
         <tetris-core
           #game
           (lineCleared)="onLineCleared()"
           (gameOver)="onGameOver()"
         >
         </tetris-core>
-      </div>
-
-      <div class="col-md-4">
-        <div style="font-size: 1.25rem" class="d-flex justify-content-around">
-          <p>
-            Score: <b>{{ points }}</b>
-          </p>
-        </div>
-        <div>
-          <div class="col-md-12 positionCompBtnRight">
-            <div class="col-md-12">
-              <button class="btn btn-outline-dark" (click)="onRotate()">
-                Rotate
-              </button>
-            </div>
-            <div class="col-md-12">
-              <button class="btn btn-outline-dark btnLeft" (click)="onLeft()">
-                Left
-              </button>
-              <button class="btn btn-outline-dark btnRight" (click)="onRight()">
-                Right
-              </button>
-            </div>
-            <div class="col-md-12">
-              <button class="btn btn-outline-dark" (click)="onDown()">Down</button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>

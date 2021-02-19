@@ -17,6 +17,10 @@ import { TetrisCoreComponent } from 'ngx-tetris';
 export class CoreGameComponent implements OnInit {
   title = 'Tetris Game';
   points = 0;
+  sek = 0;
+  h = 0;
+  min = 0;
+  timer = 0;
   history = [];
   showGameEvents = 'all';
   gameStatus = 'The game is ready. Click START button to start the game!';
@@ -41,6 +45,25 @@ export class CoreGameComponent implements OnInit {
 
   incrementPoints() {
     this.points += 1;
+  }
+
+  countTime() {
+    this.sek += 1;
+    if (this.sek == 60) {
+      this.sek = 0;
+      this.min += 1;
+    }
+    if (this.min == 60) {
+      this.min = 0;
+      this.h += 1;
+    }
+  }
+  incrementCounter() {
+    if (this.tetris.state == 1) {
+      this.timer = setInterval(() => this.countTime(), 1000);
+    } else {
+      clearInterval(this.timer);
+    }
   }
 
   onGameStart() {
